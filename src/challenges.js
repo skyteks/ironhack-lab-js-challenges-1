@@ -108,7 +108,8 @@ function uniquifyArray(array) {
         return null;
     }
     let unique = [];
-    for (let i = array.length - 1; i >= 0; i--) {
+    //for (let i = array.length - 1; i >= 0; i--) {
+    for (let i = 0; i < array.length; i++) { // WHY DOES THIS WORK ??? Shouln't I check from the back?
         if (array.indexOf(array[i]) == i) {
             unique.push(array[i]);
         }
@@ -143,13 +144,13 @@ const matrix = [
     [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
 
-function greatestProduct() {
+function greatestProduct(array) {
     let greatest = 0;
     for (let y = 0; y < array.length; y++) {
         for (let x = 0; x < array[y].length; x++) {
             let product = 1;
             for (let i = 0; i < 4; i++) {
-                if (array[y][x + i] == undefined) {
+                if (array[y][x + i] === undefined) {
                     break;
                 }
                 product *= array[y][x + i];
@@ -157,21 +158,36 @@ function greatestProduct() {
             if (product >= greatest) {
                 greatest = product;
             }
-        }
-    }
-    for (let x = 0; x < array.length; x++) {
-        for (let y = 0; y < array[y].length; y++) {
-            let product = 1;
 
+            product = 1;
             for (let i = 0; i < 4; i++) {
-                if (array[y + i][x] == undefined) {
+                if (array[y + i] === undefined) {
                     break;
                 }
-                product *= array[y][x + i];
+                product *= array[y + i][x];
             }
             if (product >= greatest) {
                 greatest = product;
             }
         }
     }
+    return greatest;
 }
+
+const test1 = [
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1],
+];
+const test2 = [
+    [2, 2, 2, 2, 2],
+    [2, 2, 2, 2, 2],
+    [2, 2, 2, 2, 2],
+    [2, 2, 2, 2, 2],
+    [2, 2, 2, 2, 2],
+];
+//console.log(greatestProduct(test1));
+//console.log(greatestProduct(test2));
+//console.log(greatestProduct(matrix));
