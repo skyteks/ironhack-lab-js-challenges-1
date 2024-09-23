@@ -157,6 +157,11 @@ function greatestProduct() {
             if (product >= greatest) {
                 greatest = product;
             }
+        }
+    }
+    for (let x = 0; x < array.length; x++) {
+        for (let y = 0; y < array[y].length; y++) {
+            let product = 1;
 
             for (let i = 0; i < 4; i++) {
                 if (array[y + i][x] == undefined) {
