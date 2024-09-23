@@ -48,10 +48,11 @@ function createSequence(number) {
 const numbers = [1, 2, 5, 10, 13, 50];
 
 function multiplyBy(array, number) {
+  let result = [];
   array.forEach((element) => {
-    element *= number;
+    result.push(element * number);
   });
-  return array;
+  return result;
 }
 
 
